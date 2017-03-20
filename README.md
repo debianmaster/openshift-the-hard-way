@@ -24,7 +24,8 @@ openshift start master --dns='tcp://0.0.0.0:8053' --public-master='https://10.12
 --master='https://10.128.0.2:8443' \
 --write-config='ocp/master'
 openshift start master --config=ocp/master/master-config.yaml
-
+export KUBECONFIG=$(pwd)/ocp/master/admin.kubeconfig
+oc get nodes
 scp -r ocp node1:/tmp
 ```
 
