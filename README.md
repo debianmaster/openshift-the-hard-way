@@ -7,6 +7,7 @@ openshift start
 export KUBECONFIG="$(pwd)"/openshift.local.config/master/admin.kubeconfig
 export CURL_CA_BUNDLE="$(pwd)"/openshift.local.config/master/ca.crt
 chmod +r "$(pwd)"/openshift.local.config/master/admin.kubeconfig
+oc get nodes
 oc adm create-node-config \
     --node-dir=openshift.local.config/node-test \
     --node=test \
