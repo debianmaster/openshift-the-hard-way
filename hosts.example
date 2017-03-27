@@ -1,0 +1,40 @@
+
+```yaml
+[OSEv3:children]
+nodes
+masters
+nfs
+etcd
+lb
+
+[OSEv3:vars]
+openshift_master_default_subdomain=35.185.146.94.nip.io
+ansible_ssh_user=cjonagam
+ansible_become=yes
+openshift_master_cluster_method=native
+openshift_master_cluster_hostname=haproxy
+openshift_master_cluster_public_hostname=35.185.168.66.nip.io
+deployment_type=origin
+
+[nodes]
+master1  openshift_schedulable=False ansible_connection=local ansible_become=yes
+master2  openshift_schedulable=False
+master3  openshift_schedulable=False
+node1  openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+
+[masters]
+master1  ansible_connection=local ansible_become=yes
+master2
+master3
+
+[nfs]
+node1
+
+[etcd]
+master1  ansible_connection=local ansible_become=yes
+master2
+master3
+
+[lb]
+haproxy  openshift_public_hostname=35.185.168.66.nip.io openshift_hostname=haproxy
+```
