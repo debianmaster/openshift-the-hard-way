@@ -105,7 +105,10 @@ gcloud compute instances create "node1" --zone "asia-east1-a" --machine-type n1-
   --private-network-ip 10.240.0.13  --subnet openshift-subnet  
 
 > Copy cat ~/.ssh/id_rsa.pub   to metadata
-
+gcloud compute copy-files ~/.ssh/id_rsa master1:~/
 gcloud compute ssh master1
+sudo yum --enablerepo=centos-openshift-origin-testing install atomic-openshift-utils  --skip-broken
+sudo yum erase ansbile 
+sudo yum --enablerepo=centos-openshift-origin-testing install atomic-openshift-utils 
 
 ``` 
