@@ -106,4 +106,6 @@ gcloud compute instances create "node1" --zone "asia-east1-a" --machine-type n1-
 
 > Copy cat ~/.ssh/id_rsa.pub   to metadata
 
+gcloud compute ssh master1
+
 ``` 
