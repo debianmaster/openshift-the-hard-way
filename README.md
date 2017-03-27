@@ -4,16 +4,16 @@
 
 ## On all nodes/master instances
 ```sh
-yum install -y centos-release-openshift-origin
-yum install -y origin-clients
-yum install -y origin
-yum install -y docker
+sudo yum install -y centos-release-openshift-origin
+sudo yum install -y origin-clients
+sudo yum install -y origin
+sudo yum install -y docker
 #edit /etc/sysconfig/docker file and add --insecure-registry 172.30.0.0/16 to the OPTIONS parameter.
-sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' \
+sudo sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' \
 /etc/sysconfig/docker
-systemctl is-active docker
-systemctl enable docker
-systemctl restart docker
+sudo systemctl is-active docker
+sudo systemctl enable docker
+sudo systemctl restart docker
 ```
 
 ## On Master let's say 10.128.0.2
