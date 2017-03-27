@@ -104,4 +104,6 @@ gcloud compute instances create "node1" --zone "asia-east1-a" --machine-type n1-
   --boot-disk-type "pd-ssd" --boot-disk-device-name "node1"  \
   --private-network-ip 10.240.0.13  --subnet openshift-subnet  
 
+> Copy cat ~/.ssh/id_rsa.pub   to metadata
+
 ``` 
