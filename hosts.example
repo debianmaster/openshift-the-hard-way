@@ -15,6 +15,9 @@ openshift_master_cluster_method=native
 openshift_master_cluster_hostname=haproxy
 openshift_master_cluster_public_hostname=35.185.168.66.nip.io
 deployment_type=origin
+os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/htpasswd'}]
+
 
 [nodes]
 master1  openshift_schedulable=False ansible_connection=local ansible_become=yes
