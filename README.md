@@ -1,3 +1,5 @@
+#  CAUTION ------WORK IN PROGRES------     
+
 # openshift-the-hard-way
 
 ## On all nodes/master instances
