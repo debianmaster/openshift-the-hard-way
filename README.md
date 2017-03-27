@@ -52,3 +52,36 @@ oc adm router
 oc new-app debianmaster/go-welcome
 oc expose svc go-welcome --hostname=go-welcome.tmp.xfc.io
 ```
+
+
+
+
+# Gcloud
+```sh
+gcloud compute instances list
+gcloud config set compute/region asia-east1
+gcloud config set compute/zone asia-east1-a
+gcloud compute networks create openshift --mode custom
+gcloud compute networks subnets create openshift-subnet \
+  --network openshift \
+  --range 10.240.0.0/24
+
+gcloud compute firewall-rules create allow-internal \
+  --allow tcp,udp,icmp \
+  --network openshift \
+  --source-ranges 10.240.0.0/24,10.200.0.0/16
+ 
+gcloud compute firewall-rules create allow-external \
+  --allow tcp:22,tcp:3389,tcp:6443,tcp:8443,icmp \
+  --network openshift \
+  --source-ranges 0.0.0.0/0  
+  
+gcloud compute firewall-rules create allow-healthz \
+  --allow tcp:8080 \
+  --network openshift \
+  --source-ranges 130.211.0.0/22 
+
+gcloud compute firewall-rules list --filter "network=openshift"
+gcloud compute addresses create openshift --region=asia-east1
+gcloud compute addresses list openshift
+``` 
