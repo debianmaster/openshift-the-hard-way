@@ -84,22 +84,22 @@ gcloud compute firewall-rules create allow-healthz \
 gcloud compute firewall-rules list --filter "network=openshift"
 gcloud compute addresses create openshift --region=asia-east1
 gcloud compute addresses list openshift
-gcloud compute instances create "master1" --zone "asia-east1-a" --machine-type "custom-4-16384" --subnet "default" \
+gcloud compute instances create "master1" --zone "asia-east1-a" --machine-type n1-standard-1 \
   --image "centos-7-v20170223" --image-project "centos-cloud" --boot-disk-size "20" \
   --boot-disk-type "pd-ssd" --boot-disk-device-name "master1"  \
   --private-network-ip 10.240.0.10  --subnet openshift-subnet
 
-gcloud compute instances create "master2" --zone "asia-east1-a" --machine-type "custom-4-16384" --subnet "default" \
+gcloud compute instances create "master2" --zone "asia-east1-a" --machine-type n1-standard-1 \
   --image "centos-7-v20170223" --image-project "centos-cloud" --boot-disk-size "20" \
   --boot-disk-type "pd-ssd" --boot-disk-device-name "master2"  \
   --private-network-ip 10.240.0.11  --subnet openshift-subnet
   
-gcloud compute instances create "master3" --zone "asia-east1-a" --machine-type "custom-4-16384" --subnet "default" \
+gcloud compute instances create "master3" --zone "asia-east1-a" --machine-type n1-standard-1 \
   --image "centos-7-v20170223" --image-project "centos-cloud" --boot-disk-size "20" \
   --boot-disk-type "pd-ssd" --boot-disk-device-name "master3"  \
   --private-network-ip 10.240.0.12  --subnet openshift-subnet  
   
-gcloud compute instances create "node1" --zone "asia-east1-a" --machine-type "custom-4-16384" --subnet "default" \
+gcloud compute instances create "node1" --zone "asia-east1-a" --machine-type n1-standard-1  \
   --image "centos-7-v20170223" --image-project "centos-cloud" --boot-disk-size "20" \
   --boot-disk-type "pd-ssd" --boot-disk-device-name "node1"  \
   --private-network-ip 10.240.0.13  --subnet openshift-subnet  
