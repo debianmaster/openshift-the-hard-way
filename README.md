@@ -81,6 +81,8 @@ gcloud compute firewall-rules create allow-healthz \
   --network openshift \
   --source-ranges 130.211.0.0/22 
 
+gcloud compute firewall-rules create allow-http-https   --allow tcp:8080,tcp:443   --network openshift   --source-ranges 0.0.0.0/0
+
 gcloud compute firewall-rules list --filter "network=openshift"
 gcloud compute addresses create openshift --region=asia-east1
 gcloud compute addresses list openshift
