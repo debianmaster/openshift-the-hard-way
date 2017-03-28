@@ -1,5 +1,4 @@
 
-```yml
 [OSEv3:children]
 nodes
 masters
@@ -40,4 +39,4 @@ master3
 
 [lb]
 haproxy  openshift_public_hostname=35.185.168.66.nip.io openshift_hostname=haproxy
-```
+
