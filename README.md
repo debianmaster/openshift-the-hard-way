@@ -100,11 +100,21 @@ gcloud compute instances create "master3" --zone "asia-east1-a" --machine-type n
   --image "centos-7-v20170223" --image-project "centos-cloud" --boot-disk-size "20" \
   --boot-disk-type "pd-ssd" --boot-disk-device-name "master3"  \
   --private-network-ip 10.240.0.12  --subnet openshift-subnet  
+
+ gcloud compute instances create "infra1" --zone "asia-east1-a" --machine-type n1-standard-1  \
+  --image "centos-7-v20170223" --image-project "centos-cloud" --boot-disk-size "20" \
+  --boot-disk-type "pd-ssd" --boot-disk-device-name "infra1"  \
+  --private-network-ip 10.240.0.51  --subnet openshift-subnet   
+
+ gcloud compute instances create "infra2" --zone "asia-east1-a" --machine-type n1-standard-1  \
+  --image "centos-7-v20170223" --image-project "centos-cloud" --boot-disk-size "20" \
+  --boot-disk-type "pd-ssd" --boot-disk-device-name "infra2"  \
+  --private-network-ip 10.240.0.52  --subnet openshift-subnet  
   
 gcloud compute instances create "node1" --zone "asia-east1-a" --machine-type n1-standard-1  \
   --image "centos-7-v20170223" --image-project "centos-cloud" --boot-disk-size "20" \
   --boot-disk-type "pd-ssd" --boot-disk-device-name "node1"  \
-  --private-network-ip 10.240.0.13  --subnet openshift-subnet  
+  --private-network-ip 10.240.0.75  --subnet openshift-subnet  
 
 > Copy cat ~/.ssh/id_rsa.pub   to metadata
 gcloud compute copy-files ~/.ssh/id_rsa master1:~/
