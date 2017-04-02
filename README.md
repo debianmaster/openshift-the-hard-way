@@ -125,3 +125,18 @@ sudo yum --enablerepo=centos-openshift-origin-testing install atomic-openshift-u
 ssh-agent $SHELL
 ssh-add ~/id_rsa
 ``` 
+
+```sh
+[Unit]
+Description=API Server
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/ocp
+ExecStart=/opt/ocp/openshift start master api --config=master/master-config.yaml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
