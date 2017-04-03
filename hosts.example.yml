@@ -19,6 +19,8 @@ openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 
 openshift_docker_options=
 openshift_router_selector='region=infra'
 openshift_registry_selector='region=infra'
+openshift_master_api_port=443
+openshift_master_console_port=443
 
 [nodes]
 master1  openshift_schedulable=True ansible_connection=local ansible_become=yes
