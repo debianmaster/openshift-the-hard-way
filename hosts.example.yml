@@ -16,7 +16,9 @@ openshift_master_cluster_public_hostname=cloud.expertsfactory.com
 deployment_type=origin
 os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/htpasswd'}]
-
+openshift_docker_options=
+openshift_router_selector='region=infra'
+openshift_registry_selector='region=infra'
 
 [nodes]
 master1  openshift_schedulable=True ansible_connection=local ansible_become=yes
