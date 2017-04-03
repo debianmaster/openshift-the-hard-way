@@ -4,7 +4,7 @@ nodes
 masters
 nfs
 etcd
-lb
+
 
 [OSEv3:vars]
 openshift_master_default_subdomain=apps.expertsfactory.com
@@ -43,7 +43,4 @@ master1  ansible_connection=local ansible_become=yes
 master2
 master3
 
-[lb]
-infra1  openshift_hostname=infra1
-infra2  openshift_hostname=infra2
 
