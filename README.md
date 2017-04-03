@@ -154,3 +154,19 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+
+
+```sh
+[Unit]
+Description=Node
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/ocp
+# set GOMAXPROCS to number of processors
+ExecStart=/opt/ocp/openshift start node --config=node1/node-config.yaml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
