@@ -140,3 +140,17 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
+```sh
+Unit]
+Description=API Controllers
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/ocp
+# set GOMAXPROCS to number of processors
+ExecStart=/opt/ocp/openshift start master controllers --config=master/master-config.yaml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
