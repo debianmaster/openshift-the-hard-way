@@ -122,9 +122,6 @@ gcloud compute ssh master1
 sudo yum install -y centos-release-openshift-origin
 sudo yum install -y origin-clients
 sudo yum install -y origin
-sudo yum --enablerepo=centos-openshift-origin-testing install atomic-openshift-utils  --skip-broken
-sudo yum erase ansbile
-sudo yum --enablerepo=centos-openshift-origin-testing install atomic-openshift-utils 
 ssh-agent $SHELL
 ssh-add ~/id_rsa
 ``` 
