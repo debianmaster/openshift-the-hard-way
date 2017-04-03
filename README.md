@@ -126,6 +126,7 @@ ssh-agent $SHELL
 ssh-add ~/id_rsa
 ``` 
 
+`vi /usr/lib/systemd/system/xfc-master-api.service`
 ```sh
 [Unit]
 Description=API Server
@@ -139,6 +140,7 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+`vi /usr/lib/systemd/system/xfc-master-controller.service` 
 
 ```sh
 Unit]
@@ -155,6 +157,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
+`vi /usr/lib/systemd/system/xfc-node.service`  
 
 ```sh
 [Unit]
