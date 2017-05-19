@@ -177,7 +177,63 @@ aws ec2 create-tags \
   --resources ${CONTROLLER_2_INSTANCE_ID} \
   --tags Key=Name,Value=controller2
 
-aws ec2 describe-instances     --filters "Name=tag:Name,Values=controller0" |     jq -j '.Reservations[].Instances[].PublicIpAddress'
+WORKER_0_INSTANCE_ID=$(aws ec2 run-instances \
+  --associate-public-ip-address \
+  --iam-instance-profile 'Name=kubernetes' \
+  --image-id ${IMAGE_ID} \
+  --count 1 \
+  --key-name kubernetes \
+  --security-group-ids ${SECURITY_GROUP_ID} \
+  --instance-type t2.small \
+  --private-ip-address 10.240.0.20 \
+  --subnet-id ${SUBNET_ID} | \
+  jq -r '.Instances[].InstanceId')
+aws ec2 modify-instance-attribute \
+  --instance-id ${WORKER_0_INSTANCE_ID} \
+  --no-source-dest-check
+aws ec2 create-tags \
+  --resources ${WORKER_0_INSTANCE_ID} \
+  --tags Key=Name,Value=worker0
+WORKER_1_INSTANCE_ID=$(aws ec2 run-instances \
+  --associate-public-ip-address \
+  --iam-instance-profile 'Name=kubernetes' \
+  --image-id ${IMAGE_ID} \
+  --count 1 \
+  --key-name kubernetes \
+  --security-group-ids ${SECURITY_GROUP_ID} \
+  --instance-type t2.small \
+  --private-ip-address 10.240.0.21 \
+  --subnet-id ${SUBNET_ID} | \
+  jq -r '.Instances[].InstanceId')
+aws ec2 modify-instance-attribute \
+  --instance-id ${WORKER_1_INSTANCE_ID} \
+  --no-source-dest-check
+aws ec2 create-tags \
+  --resources ${WORKER_1_INSTANCE_ID} \
+  --tags Key=Name,Value=worker1
+WORKER_2_INSTANCE_ID=$(aws ec2 run-instances \
+  --associate-public-ip-address \
+  --iam-instance-profile 'Name=kubernetes' \
+  --image-id ${IMAGE_ID} \
+  --count 1 \
+  --key-name kubernetes \
+  --security-group-ids ${SECURITY_GROUP_ID} \
+  --instance-type t2.small \
+  --private-ip-address 10.240.0.22 \
+  --subnet-id ${SUBNET_ID} | \
+  jq -r '.Instances[].InstanceId')
+aws ec2 modify-instance-attribute \
+  --instance-id ${WORKER_2_INSTANCE_ID} \
+  --no-source-dest-check
+aws ec2 create-tags \
+  --resources ${WORKER_2_INSTANCE_ID} \
+  --tags Key=Name,Value=worker2
+  
+aws ec2 describe-instances \
+  --filters "Name=instance-state-name,Values=running" | \
+  jq -j '.Reservations[].Instances[] | .InstanceId, "  ", .Placement.AvailabilityZone, "  ", .PrivateIpAddress, "  ", .PublicIpAddress, "\n"'
+  
+
 ```
 
 
