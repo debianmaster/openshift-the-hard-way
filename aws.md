@@ -128,7 +128,7 @@ CONTROLLER_0_INSTANCE_ID=$(aws ec2 run-instances \
   --count 1 \
   --key-name kubernetes \
   --security-group-ids ${SECURITY_GROUP_ID} \
-  --instance-type t2.small \
+  --instance-type t2.medium \
   --private-ip-address 10.240.0.10 \
   --subnet-id ${SUBNET_ID} | \
   jq -r '.Instances[].InstanceId')
@@ -147,7 +147,7 @@ CONTROLLER_1_INSTANCE_ID=$(aws ec2 run-instances \
   --count 1 \
   --key-name kubernetes \
   --security-group-ids ${SECURITY_GROUP_ID} \
-  --instance-type t2.small \
+  --instance-type t2.medium \
   --private-ip-address 10.240.0.11 \
   --subnet-id ${SUBNET_ID} | \
   jq -r '.Instances[].InstanceId')
@@ -165,7 +165,7 @@ CONTROLLER_2_INSTANCE_ID=$(aws ec2 run-instances \
   --count 1 \
   --key-name kubernetes \
   --security-group-ids ${SECURITY_GROUP_ID} \
-  --instance-type t2.small \
+  --instance-type t2.medium \
   --private-ip-address 10.240.0.12 \
   --subnet-id ${SUBNET_ID} | \
   jq -r '.Instances[].InstanceId')
@@ -184,7 +184,7 @@ WORKER_0_INSTANCE_ID=$(aws ec2 run-instances \
   --count 1 \
   --key-name kubernetes \
   --security-group-ids ${SECURITY_GROUP_ID} \
-  --instance-type t2.small \
+  --instance-type t2.medium \
   --private-ip-address 10.240.0.20 \
   --subnet-id ${SUBNET_ID} | \
   jq -r '.Instances[].InstanceId')
@@ -201,7 +201,7 @@ WORKER_1_INSTANCE_ID=$(aws ec2 run-instances \
   --count 1 \
   --key-name kubernetes \
   --security-group-ids ${SECURITY_GROUP_ID} \
-  --instance-type t2.small \
+  --instance-type t2.medium \
   --private-ip-address 10.240.0.21 \
   --subnet-id ${SUBNET_ID} | \
   jq -r '.Instances[].InstanceId')
@@ -218,7 +218,7 @@ WORKER_2_INSTANCE_ID=$(aws ec2 run-instances \
   --count 1 \
   --key-name kubernetes \
   --security-group-ids ${SECURITY_GROUP_ID} \
-  --instance-type t2.small \
+  --instance-type t2.medium \
   --private-ip-address 10.240.0.22 \
   --subnet-id ${SUBNET_ID} | \
   jq -r '.Instances[].InstanceId')
