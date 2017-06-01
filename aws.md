@@ -73,7 +73,7 @@ aws ec2 authorize-security-group-ingress \
 
 aws elb create-load-balancer \
   --load-balancer-name kubernetes \
-  --listeners "Protocol=TCP,LoadBalancerPort=6443,InstanceProtocol=TCP,InstancePort=6443" \
+  --listeners "Protocol=TCP,LoadBalancerPort=443,InstanceProtocol=TCP,InstancePort=443" \
   --subnets ${SUBNET_ID} \
   --security-groups ${SECURITY_GROUP_ID}
 
