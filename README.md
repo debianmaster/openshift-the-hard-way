@@ -198,4 +198,6 @@ WantedBy=multi-user.target
 aws ec2 describe-instances \
   --filters "Name=tag:cluster,Values=chak" | \
   jq -j '.Reservations[].Instances[] | .InstanceId, "  ", .Placement.AvailabilityZone, "  ", .PrivateIpAddress, "  ", .PublicIpAddress, "\n"'
+  
+aws ec2 describe-instances   --filters "Name=tag:cluster,Values=chak" |   jq -j '.Reservations[].Instances[] | .PrivateIpAddress, "  ", .PublicIpAddress, "\n"'  
   ```
