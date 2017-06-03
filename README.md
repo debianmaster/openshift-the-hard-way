@@ -191,3 +191,11 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+
+
+
+```sh
+aws ec2 describe-instances \
+  --filters "Name=tag:cluster,Values=chak" | \
+  jq -j '.Reservations[].Instances[] | .InstanceId, "  ", .Placement.AvailabilityZone, "  ", .PrivateIpAddress, "  ", .PublicIpAddress, "\n"'
+  ```
