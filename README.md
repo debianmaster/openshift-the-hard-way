@@ -201,3 +201,20 @@ aws ec2 describe-instances \
   
 aws ec2 describe-instances   --filters "Name=tag:cluster,Values=chak" |   jq -j '.Reservations[].Instances[] | .PrivateIpAddress, "  ", .PublicIpAddress, "\n"'  
   ```
+
+
+```sh
+master_routingconfig_subdomain: apps.ck.osecloud.com
+  openshift_master_cluster_hostname: ck.osecloud.com
+  openshift_master_cluster_public_hostname: ck.osecloud.com
+  openshift_master_api_port: 443
+  openshift_master_console_port: 443
+  openshift_hosted_manage_router: true
+  openshift_hosted_manage_registry: true
+  openshift_hosted_router_selector: 'region=infra'
+  openshift_hosted_registry_selector: 'region=infra'
+  openshift_hosted_metrics_deploy: true
+  openshift_master_logging_public_url: https://kibana.apps.ck.osecloud.com
+  openshift_hosted_logging_deploy: true
+  openshift_master_identity_providers: [{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
+  ```
