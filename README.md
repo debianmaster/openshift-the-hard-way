@@ -233,11 +233,7 @@ export record_type=A
 
 expport zone_id=$(aws route53 list-hosted-zones | jq -r ".HostedZones[] | select(.Name == \"ck.osecloud.com.\") | .Id" | cut -d'/' -f3)
 
-```
 
-> addns.sh  
-```sh
-#!/bin/bash
 function change_batch() {
 	jq -c -n "{\"Changes\": [{\"Action\": \"$action\", \"ResourceRecordSet\": {\"Name\": \"$record_name\", \"Type\": \"$record_type\", \"TTL\": $ttl, \"ResourceRecords\": [{\"Value\": \"$record_value\"} ] } } ] }"
 }
