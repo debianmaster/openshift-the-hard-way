@@ -1,0 +1,37 @@
+
+[OSEv3:children]
+nodes
+masters
+nfs
+etcd
+
+[OSEv3:vars]
+openshift_master_cluster_public_hostname=cloud.xfc.io
+openshift_master_default_subdomain=apps.xfc.io
+ansible_ssh_user=cjonagam
+openshift_master_cluster_hostname=cloud.xfc.io
+ansible_become=yes
+openshift_override_hostname_check=true
+deployment_type=origin
+openshift_release=v3.6.0
+openshift_image_tag=v3.6.0
+os_sdn_network_plugin_name=cni
+openshift_use_calico=true
+openshift_use_openshift_sdn=false
+openshift_disable_check=disk_availability,memory_availability,docker_storage
+openshift_master_api_port=443
+openshift_master_console_port=443
+
+[nodes]
+10.240.0.10  openshift_public_ip=104.155.223.169 openshift_ip=10.240.0.10 openshift_public_hostname=104.155.223.169 openshift_hostname=master1 openshift_schedulable=False ansible_connection=local ansible_become=yes
+10.240.0.51  openshift_public_ip=104.199.210.73 openshift_ip=10.240.0.51 openshift_public_hostname=104.199.210.73 openshift_hostname=infra1 openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+10.240.0.75  openshift_public_ip=104.155.226.9 openshift_ip=10.240.0.75 openshift_public_hostname=104.155.226.9 openshift_hostname=node1 openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+
+[masters]
+10.240.0.10  openshift_public_ip=104.155.223.169 openshift_ip=10.240.0.10 openshift_public_hostname=104.155.223.169 openshift_hostname=master1 ansible_connection=local ansible_become=yes
+
+[nfs]
+10.240.0.10  openshift_public_ip=104.155.223.169 openshift_ip=10.240.0.10 openshift_public_hostname=104.155.223.169 openshift_hostname=master1 ansible_connection=local ansible_become=yes
+
+[etcd]
+10.240.0.10  openshift_public_ip=104.155.223.169 openshift_ip=10.240.0.10 openshift_public_hostname=104.155.223.169 openshift_hostname=master1 ansible_connection=local ansible_become=yes
