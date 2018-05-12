@@ -4,7 +4,6 @@ masters
 nfs
 etcd
 
-
 [OSEv3:vars]
 openshift_master_default_subdomain=apps.create9.com
 ansible_ssh_user=cjonagam
