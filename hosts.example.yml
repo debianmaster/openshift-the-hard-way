@@ -7,12 +7,12 @@ etcd
 
 
 [OSEv3:vars]
-openshift_master_default_subdomain=apps.expertsfactory.com
+openshift_master_default_subdomain=apps.create9.com
 ansible_ssh_user=cjonagam
 ansible_become=yes
 openshift_master_cluster_method=native
-openshift_master_cluster_hostname=cloud.expertsfactory.com
-openshift_master_cluster_public_hostname=cloud.expertsfactory.com
+openshift_master_cluster_hostname=cloud.create9.com
+openshift_master_cluster_public_hostname=cloud.create9.com
 deployment_type=origin
 os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/htpasswd'}]
@@ -23,12 +23,14 @@ openshift_master_api_port=443
 openshift_master_console_port=443
 
 [nodes]
-master1  openshift_schedulable=True ansible_connection=local ansible_become=yes
-master2  openshift_schedulable=True
-master3  openshift_schedulable=True
+master1  openshift_schedulable=False ansible_connection=local ansible_become=yes
+master2  openshift_schedulable=False
+master3  openshift_schedulable=False
 infra1  openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
 infra2  openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
 node1  openshift_node_labels="{'region': 'node'}" openshift_schedulable=True
+node2  openshift_node_labels="{'region': 'node'}" openshift_schedulable=True
+
 
 [masters]
 master1  ansible_connection=local ansible_become=yes
@@ -36,7 +38,8 @@ master2
 master3
 
 [nfs]
-node1
+infra1
+infra2
 
 [etcd]
 master1  ansible_connection=local ansible_become=yes
