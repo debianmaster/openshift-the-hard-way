@@ -248,3 +248,12 @@ function change_batch() {
 
 aws route53 change-resource-record-sets --hosted-zone-id ${zone_id} --change-batch $(change_batch) | jq -r '.ChangeInfo.Id' | cut -d'/' -f3
 ```
+
+
+```sh
+gcloud compute disks create infra1-disk --size 200GB --type pd-standard --zone=asia-east1-b
+gcloud compute disks create infra2-disk --size 200GB --type pd-standard --zone=asia-east1-b
+
+gcloud compute instances attach-disk infra1 --disk infra1-disk --zone=asia-east1-a
+gcloud compute instances attach-disk infra2 --disk infra2-disk --zone=asia-east1-b
+```
