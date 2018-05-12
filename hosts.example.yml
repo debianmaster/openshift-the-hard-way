@@ -13,6 +13,7 @@ openshift_router_selector='region=infra'
 openshift_registry_selector='region=infra'
 openshift_master_api_port=443
 openshift_master_console_port=443
+openshift_disable_check=memory_availability,disk_availability,docker_storage,docker_image_availability
 
 [nodes]
 master1.asia-east1-a.clever-reserve-203714  openshift_schedulable=False ansible_connection=local ansible_become=yes
