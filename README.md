@@ -256,4 +256,23 @@ gcloud compute disks create infra2-disk --size 200GB --type pd-standard --zone=a
 
 gcloud compute instances attach-disk infra1 --disk infra1-disk --zone=asia-east1-a
 gcloud compute instances attach-disk infra2 --disk infra2-disk --zone=asia-east1-b
+
+gcloud compute target-pools create openshift-tp
+
+gcloud compute target-pools add-instances openshift-tp   --instances master1 --instances-zone=asia-east1-a
+gcloud compute target-pools add-instances openshift-tp   --instances master2 --instances-zone=asia-east1-b
+gcloud compute target-pools add-instances openshift-tp   --instances master3 --instances-zone=asia-east1-c
+
+
+export openshift_master=$(gcloud compute addresses describe openshift --region asia-east1 --format 'value(address)')
+
+
+gcloud compute forwarding-rules create openshift-forwarding-rule \
+  --address ${openshift_master} \
+  --ports 443 \
+  --region $(gcloud config get-value compute/region) \
+  --target-pool openshift-tp
+
+
+gcloud compute forwarding-rules create openshift-forwarding-rule   --address ${openshift_master}   --ports 443,80   --region asia-east1   --target-pool openshift-tp
 ```
