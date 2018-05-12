@@ -275,4 +275,13 @@ gcloud compute forwarding-rules create openshift-forwarding-rule \
 
 
 gcloud compute forwarding-rules create openshift-forwarding-rule   --address ${openshift_master}   --ports 443,80   --region asia-east1   --target-pool openshift-tp
+
+
+gcloud dns record-sets transaction start --zone=create9
+
+gcloud dns record-sets transaction add 104.155.237.36 --name=cloud.create9.io. --ttl=300 --type=A --zone=create9
+
+gcloud dns record-sets transaction execute --zone=create9
+
+
 ```
