@@ -6,6 +6,7 @@ openshift_master_cluster_method=native
 openshift_master_cluster_hostname=cloud.create9.io
 openshift_master_cluster_public_hostname=cloud.create9.io
 deployment_type=origin
+openshift_deployment_type=origin
 
 os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/htpasswd'}]
