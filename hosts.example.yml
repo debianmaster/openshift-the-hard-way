@@ -6,6 +6,7 @@ openshift_master_cluster_method=native
 openshift_master_cluster_hostname=cloud.create9.io
 openshift_master_cluster_public_hostname=cloud.create9.io
 deployment_type=origin
+
 os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/htpasswd'}]
 openshift_docker_options='--selinux-enabled --insecure-registry 172.30.0.0/16'
@@ -13,7 +14,7 @@ openshift_router_selector='region=infra'
 openshift_registry_selector='region=infra'
 openshift_master_api_port=443
 openshift_master_console_port=443
-openshift_disable_check=memory_availability,disk_availability,docker_storage,docker_image_availability
+openshift_disable_check=memory_availability,disk_availability,docker_storage,docker_image_availability,memory_availability
 
 [nodes]
 master1.asia-east1-a.clever-reserve-203714  openshift_schedulable=False ansible_connection=local ansible_become=yes
