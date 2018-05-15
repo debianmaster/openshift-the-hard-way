@@ -16,6 +16,7 @@ openshift_registry_selector='region=infra'
 openshift_master_api_port=443
 openshift_master_console_port=443
 openshift_disable_check=memory_availability,disk_availability,docker_storage,docker_image_availability,memory_availability
+openshift_enable_docker_excluder=False
 
 [nodes]
 mk-ig-master-0  openshift_schedulable=True 
