@@ -8,7 +8,7 @@ sudo yum install -y centos-release-openshift-origin
 sudo yum install -y origin-clients
 sudo yum install -y origin
 sudo yum install -y docker
-#edit /etc/sysconfig/docker file and add --insecure-registry 172.30.0.0/16 to the OPTIONS parameter.
+sudo yum install atomic-openshift-utils -y
 sudo sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' \
 /etc/sysconfig/docker
 sudo systemctl is-active docker
