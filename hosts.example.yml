@@ -1,10 +1,10 @@
 [OSEv3:vars]
-openshift_master_default_subdomain=apps.create9.io
+openshift_master_default_subdomain=apps.minikube.io
 ansible_ssh_user=cjonagam
 ansible_become=yes
 openshift_master_cluster_method=native
-openshift_master_cluster_hostname=cloud.create9.io
-openshift_master_cluster_public_hostname=cloud.create9.io
+openshift_master_cluster_hostname=cloud.minikube.io
+openshift_master_cluster_public_hostname=cloud.minikube.io
 deployment_type=origin
 openshift_deployment_type=origin
 
