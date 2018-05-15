@@ -9,6 +9,8 @@ sudo yum install -y origin-clients
 sudo yum install -y origin
 sudo yum install -y docker
 sudo yum install atomic-openshift-utils -y
+sudo yum install -y origin-docker-excluder.noarch
+
 sudo sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' \
 /etc/sysconfig/docker
 sudo systemctl is-active docker
