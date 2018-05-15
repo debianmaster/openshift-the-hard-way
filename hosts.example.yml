@@ -18,9 +18,9 @@ openshift_master_console_port=443
 openshift_disable_check=memory_availability,disk_availability,docker_storage,docker_image_availability,memory_availability
 
 [nodes]
-mk-ig-master-0  openshift_schedulable=False 
-mk-ig-master-1  openshift_schedulable=False
-mk-ig-master-2  openshift_schedulable=False
+mk-ig-master-0  openshift_schedulable=True 
+mk-ig-master-1  openshift_schedulable=True
+mk-ig-master-2  openshift_schedulable=True
 mk-ig-infra-0  openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
 mk-ig-node-0  openshift_node_labels="{'region': 'node'}" openshift_schedulable=True
 
