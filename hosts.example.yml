@@ -1,10 +1,10 @@
 [OSEv3:vars]
-openshift_master_default_subdomain=apps.minikube.io
+openshift_master_default_subdomain=apps.create9.io
 ansible_ssh_user=cjonagam
 ansible_become=yes
 openshift_master_cluster_method=native
-openshift_master_cluster_hostname=cloud.minikube.io
-openshift_master_cluster_public_hostname=cloud.minikube.io
+openshift_master_cluster_hostname=cloud.create9.io
+openshift_master_cluster_public_hostname=cloud.create9.io
 deployment_type=origin
 openshift_deployment_type=origin
 
@@ -18,25 +18,23 @@ openshift_master_console_port=443
 openshift_disable_check=memory_availability,disk_availability,docker_storage,docker_image_availability,memory_availability
 
 [nodes]
-master1.asia-east1-a.clever-reserve-203714  openshift_schedulable=False ansible_connection=local ansible_become=yes
-master2.asia-east1-b.clever-reserve-20371  openshift_schedulable=False
-master3.asia-east1-c.clever-reserve-20371  openshift_schedulable=False
-infra1.asia-east1-a.clever-reserve-203714  openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
-infra2.asia-east1-b.clever-reserve-20371  openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
-node1.asia-east1-a.clever-reserve-203714  openshift_node_labels="{'region': 'node'}" openshift_schedulable=True
-node2.asia-east1-b.clever-reserve-20371  openshift_node_labels="{'region': 'node'}" openshift_schedulable=True
+mk-ig-master-0  openshift_schedulable=False 
+mk-ig-master-1  openshift_schedulable=False
+mk-ig-master-2  openshift_schedulable=False
+mk-ig-infra-0  openshift_node_labels="{'region': 'infra'}" openshift_schedulable=True
+mk-ig-node-0  openshift_node_labels="{'region': 'node'}" openshift_schedulable=True
+
 
 
 [masters]
-master1.asia-east1-a.clever-reserve-203714  ansible_connection=local ansible_become=yes
-master2.asia-east1-b.clever-reserve-20371
-master3.asia-east1-c.clever-reserve-20371
+mk-ig-master-0  
+mk-ig-master-1
+mk-ig-master-2
 
 [nfs]
-infra1.asia-east1-a.clever-reserve-203714
-infra2.asia-east1-b.clever-reserve-20371
+mk-ig-infra-0
 
 [etcd]
-master1.asia-east1-a.clever-reserve-203714  ansible_connection=local ansible_become=yes
-master2.asia-east1-b.clever-reserve-20371
-master3.asia-east1-c.clever-reserve-20371
+mk-ig-master-0  
+mk-ig-master-1
+mk-ig-master-2
